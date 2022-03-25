@@ -1,0 +1,1 @@
+A basic REST API built with NodeJs, Express and MongoDB.
