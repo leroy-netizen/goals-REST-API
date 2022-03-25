@@ -5,8 +5,6 @@ const { getGoals, addGoal, updateGoal, deleteGoal } = require('../controllers/go
 //routes start here
 
 
-router.get('/', getGoals)
-
 // router.get('/', (req, res) => {
 //     res.status(200).json({
 //         message: "Get goals"
@@ -14,7 +12,9 @@ router.get('/', getGoals)
 // })
 
 
-router.post('/', addGoal)
+router.route('/').get(getGoals).post(addGoal)
+router.route('/:id').delete(deleteGoal).put(updateGoal)
+
 
 router.put('/:id', updateGoal)
 
