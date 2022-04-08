@@ -11,7 +11,7 @@ const User = require('../models/userModel')
 const registerUser = asyncHandler(async (req, res) => {
     const {name, email, password } = req.body //destructure from body data.
 
-    if(!name || !email ||!password){
+    if(!name || !email || !password){
         res.status(400)
         throw new Error('Please add all fields')
     }
@@ -53,7 +53,7 @@ if(user){
 // @route POST/api/users/login
 // @access Public
 
-//LOging a user in
+//Logging a user in
 const loginUser = asyncHandler(async (req, res) => {
     const {email, password} = req.body
 
@@ -74,9 +74,16 @@ const loginUser = asyncHandler(async (req, res) => {
 })
 // @desc  get User data
 // @route GET/api/users/me
-// @access Public
+// @access Private
 const getMe = asyncHandler(async (req, res) => {
-    res.json({message: 'Load user data '})
+    const {_id, name, email} = await User.findById(req.user.id)
+
+    res.status(200).json({
+
+        id: _id,
+        name,
+        email
+    })
 })
 
 
