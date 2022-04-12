@@ -31,6 +31,6 @@ jobs:
       
   -name: Run server
   
-     run: npm run server
+     run: npm start
        
      
