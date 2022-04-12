@@ -31,7 +31,11 @@ jobs:
           - uses: actions/setup-node@v3
             with:
               node-version: '17'
-          - run: npm install
-                 npm run server
+              
+      -name: install all dependencies
+             run: npm install
+             
+      -name: run the application
+             run: npm run server
       
      
